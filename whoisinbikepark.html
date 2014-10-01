@@ -1,0 +1,21 @@
+<head>
+  <title>Kto je v bikeparku?</title>
+</head>
+
+<body>
+  {{>home}}
+</body>
+
+<template name="home">
+  {{#if currentUser}}
+    {{#if going}}
+      <p><a href="#" class="not-going">Nejdem do bikeparku</a></p>
+    {{else}}
+      <p><a href="#" class="going">Idem do bikeparku!</a></p>
+    {{/if}}
+  {{else}}
+    <p><a href="#" class="fb-login-btn">Prihlásiť sa cez Facebook</a></p>
+  {{/if}}
+  <p>Oh I just changed you {{counter}}</p>
+  <button class="counter">Count me in</button>
+</template>
