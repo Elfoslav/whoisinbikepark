@@ -14,7 +14,6 @@ Template.home.helpers({
 Template.home.events({
   'click .fb-login-btn': function (e) {
     e.preventDefault();
-    console.log('fb login');
     Meteor.loginWithFacebook({
       requestPermissions: [],
       loginStyle: 'redirect' //needed redirect for mobile app
@@ -22,13 +21,20 @@ Template.home.events({
       console.log('login error: ', err);
     });
   },
-  'click .logout-btn': function() {
+  'click .logout-btn': function(e) {
+    e.preventDefault();
     Meteor.logout();
   },
-  'click .going': function() {
-    Meteor.call('going');
+  'click .going': function(e) {
+    e.preventDefault();
+    Meteor.call('going', new Date(), function(err, rowsUpdated) {
+      console.log('going rows updated: ', rowsUpdated);
+    });
   },
-  'click .not-going': function() {
-    Meteor.call('notGoing');
+  'click .not-going': function(e) {
+    e.preventDefault();
+    Meteor.call('notGoing', function(err, rowsUpdated) {
+      console.log('notGoing rows updated: ', rowsUpdated);
+    });
   }
 });

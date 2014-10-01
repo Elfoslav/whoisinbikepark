@@ -8,22 +8,27 @@ Meteor.startup(function () {
   });
 
   Meteor.methods({
-    'going': function() {
-      Meteor.users.update(this.userId, {
+    'going': function(date) {
+      console.log('going date: ', date);
+      date = date || new Date();
+      return Meteor.users.update(this.userId, {
         $set: {
-          goingDate: getMidnightDate(new Date())
+          goingDate: getMidnightDate(date)
         },
         $addToSet: {
-          goingDates: getMidnightDate(new Date())
+          goingDates: getMidnightDate(date)
         }
       });
     },
     'notGoing': function() {
-      Meteor.users.update(this.userId, {
+      return Meteor.users.update(this.userId, {
         $unset: {
           goingDate: ""
         }
       });
+    },
+    'getDate': function() {
+      return new Date();
     }
   });
 });

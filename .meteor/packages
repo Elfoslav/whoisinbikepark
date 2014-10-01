@@ -7,3 +7,6 @@ standard-app-packages
 accounts-facebook
 service-configuration
 pinglamb:bootstrap3
+fastclick
+sacha:spin
+
