@@ -1,1 +1,26 @@
 /* CSS declarations go here */
+.center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+/* desktop & tablet */
+@media only screen
+and (min-width : 768px) {
+  .attenders {
+    width: 360px;
+    margin: auto;
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-width : 320px)
+and (max-width : 767px) {
+  .logout-btn {
+    margin-top: 10px;
+  }
+}

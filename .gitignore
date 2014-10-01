@@ -1,1 +1,2 @@
 *.komodoproject
+server/lib/accounts-config.js

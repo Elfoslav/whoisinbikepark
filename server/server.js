@@ -1,10 +1,29 @@
 Meteor.startup(function () {
-  ServiceConfiguration.configurations.remove({
-    service: "facebook"
+  Meteor.publish('attenders', function() {
+    return Meteor.users.find({
+      goingDate: getMidnightDate(new Date())
+    }, {
+      //TODO filter fields to publish
+    });
   });
-  ServiceConfiguration.configurations.insert({
-    service: "facebook",
-    appId: '700491546665906',
-    secret: '1c05ddefa5fd9499dd73be0d680eec2b'
+
+  Meteor.methods({
+    'going': function() {
+      Meteor.users.update(this.userId, {
+        $set: {
+          goingDate: getMidnightDate(new Date())
+        },
+        $addToSet: {
+          goingDates: getMidnightDate(new Date())
+        }
+      });
+    },
+    'notGoing': function() {
+      Meteor.users.update(this.userId, {
+        $unset: {
+          goingDate: ""
+        }
+      });
+    }
   });
 });

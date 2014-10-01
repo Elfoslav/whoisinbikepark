@@ -7,15 +7,41 @@
 </body>
 
 <template name="home">
-  {{#if currentUser}}
-    {{#if going}}
-      <p><a href="#" class="not-going">Nejdem do bikeparku</a></p>
-    {{else}}
-      <p><a href="#" class="going">Idem do bikeparku!</a></p>
-    {{/if}}
-  {{else}}
-    <p><a href="#" class="fb-login-btn">Prihlásiť sa cez Facebook</a></p>
-  {{/if}}
-  <p>Oh I just changed you {{counter}}</p>
-  <button class="counter">Count me in</button>
+  <div class="container center">
+    <p><img src="/images/kalnica-logo.png" alt="Kalnica logo" /></p>
+    <div class="row">
+      {{#if currentUser}}
+        <div class="col-sm-6">
+          {{#if going}}
+            <a href="#" class="btn btn-default not-going btn-block btn-lg">
+              <img src="/images/bike-icon.png?1" alt="bike icon" /> Nejdem do bikeparku
+            </a>
+          {{else}}
+            <a href="#" class="btn btn-success going btn-block btn-lg">
+              <img src="/images/bike-icon-white.png?1" alt="bike icon" /> Idem do bikeparku!
+            </a>
+          {{/if}}
+        </div>
+        <div class="col-sm-6">
+          <a href="#" class="btn btn-default logout-btn btn-block btn-lg" title="odhlásiť"><span class="glyphicon glyphicon-off"></span> {{currentUser.profile.name}}</a>
+        </div>
+      {{else}}
+        <div class="col-sm-12">
+          <a href="#" class="btn btn-success fb-login-btn btn-block btn-lg">Prihlásiť sa</a>
+        </div>
+      {{/if}}
+    </div>
+    <h3>Kto je dnes v Kálnici?</h3>
+
+    <div class="attenders">
+      {{#each attenders}}
+        <p class="text-align-left">
+          <img src="https://graph.facebook.com/{{services.facebook.id}}/picture?type=small" alt="photo" />
+          {{profile.name}}
+        </p>
+      {{else}}
+        Nikto.
+      {{/each}}
+    </div>
+  </div>
 </template>
