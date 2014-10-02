@@ -1,5 +1,7 @@
 Meteor.startup(function () {
   Meteor.publish('attenders', function() {
+    console.log('publish attenders date: ', new Date());
+    console.log('publishing attenders with date: ', getMidnightDate(new Date()));
     return Meteor.users.find({
       goingDate: getMidnightDate(new Date())
     }, {
@@ -10,6 +12,7 @@ Meteor.startup(function () {
   Meteor.methods({
     'going': function(date) {
       console.log('going date: ', date);
+      console.log('getMidnightDate(date)', getMidnightDate(date));
       date = date || new Date();
       return Meteor.users.update(this.userId, {
         $set: {
