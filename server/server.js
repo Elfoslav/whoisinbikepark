@@ -1,4 +1,6 @@
 Meteor.startup(function () {
+  Meteor.users._ensureIndex({ goingDate: 1 });
+
   Meteor.publish('attenders', function() {
     console.log('publish attenders date: ', new Date());
     console.log('publishing attenders with date: ', getMidnightDate(new Date()));
