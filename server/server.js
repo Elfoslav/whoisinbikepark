@@ -5,7 +5,11 @@ Meteor.startup(function () {
     return Meteor.users.find({
       goingDate: getMidnightDate(new Date())
     }, {
-      //TODO filter fields to publish
+      fields: {
+        goingDate: 1,
+        profile: 1,
+        'services.facebook.id': 1
+      }
     });
   });
 
