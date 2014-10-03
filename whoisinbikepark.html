@@ -40,7 +40,11 @@
     <div class="attenders list-group">
       {{#each attenders}}
         <p class="text-align-left list-group-item">
-          <img src="https://graph.facebook.com/{{services.facebook.id}}/picture?type=small" alt="photo" />
+          {{#if services}}
+            <img src="https://graph.facebook.com/{{services.facebook.id}}/picture?type=small" alt="photo" />
+          {{else}}
+            <img src="/images/spinner.gif" alt="loading image..." />
+          {{/if}}
           {{profile.name}}
         </p>
       {{else}}
