@@ -17,20 +17,27 @@
           <div class="col-sm-6">
             {{#if going}}
               <a href="#" class="btn btn-default not-going btn-block btn-lg">
-                <img src="/images/bike-icon.png?1" alt="bike icon" /> Nejdem do bikeparku
+                <img src="/images/bike-icon.png?1" alt="bike icon" />
+                Nejdem do bikeparku
               </a>
             {{else}}
               <a href="#" class="btn btn-success going btn-block btn-lg">
-                <img src="/images/bike-icon-white.png?1" alt="bike icon" /> Idem do bikeparku!
+                <img src="/images/bike-icon-white.png?1" alt="bike icon" />
+                Idem do bikeparku!
               </a>
             {{/if}}
           </div>
           <div class="col-sm-6">
-            <a href="#" class="btn btn-default logout-btn btn-block btn-lg" title="odhlásiť"><span class="glyphicon glyphicon-off"></span> {{currentUser.profile.name}}</a>
+            <a href="#" class="btn btn-default logout-btn btn-block btn-lg" title="odhlásiť">
+              <span class="glyphicon glyphicon-off"></span>
+              <span class="logout-text">{{currentUser.profile.name}}</span>
+            </a>
           </div>
         {{else}}
           <div class="col-sm-12">
-            <a href="#" class="btn btn-success fb-login-btn btn-block btn-lg">Prihlásiť sa</a>
+            <a href="#" class="btn btn-success fb-login-btn btn-block btn-lg">
+              Prihlásiť sa
+            </a>
           </div>
         {{/if}}
       {{/if}}
