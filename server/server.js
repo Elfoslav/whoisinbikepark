@@ -1,5 +1,6 @@
 Meteor.startup(function () {
   Meteor.users._ensureIndex({ goingDate: 1 });
+  Logs = new Mongo.Collection("logs");
 
   Meteor.publish('attenders', function() {
     console.log('publish attenders date: ', new Date());
@@ -13,5 +14,14 @@ Meteor.startup(function () {
         'services.facebook.id': 1
       }
     });
+  });
+
+  Meteor.methods({
+    log: function(errMessage) {
+      Logs.insert({
+        timestamp: new Date(),
+        message: errMessage
+      });
+    }
   });
 });

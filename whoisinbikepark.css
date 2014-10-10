@@ -23,4 +23,10 @@ and (max-width : 767px) {
   .logout-btn {
     margin-top: 10px;
   }
+
+  /* don't activate button on hover (Android) */
+  .btn-success:hover {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
 }
