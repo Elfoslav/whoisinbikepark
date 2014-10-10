@@ -15,16 +15,18 @@ Template.home.events({
   'click .fb-login-btn': function (e) {
     e.preventDefault();
 
-    $(e.currentTarget).text('Prihlasujem...');
+    $('.login-text').text('Prihlasujem...');
 
-    Meteor.loginWithFacebook({
-      requestPermissions: [],
-      loginStyle: 'redirect' //needed redirect for mobile app
-    }, function(err) {
-      if (err) {
-        console.log('login error: ', err);
-      }
-    });
+    setTimeout(function() {
+      Meteor.loginWithFacebook({
+        requestPermissions: [],
+        loginStyle: 'redirect' //needed redirect for mobile app
+      }, function(err) {
+        if (err) {
+          console.log('login error: ', err);
+        }
+      });
+    }, 10);
   },
   'click .logout-btn': function(e) {
     e.preventDefault();
