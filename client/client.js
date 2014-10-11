@@ -8,6 +8,9 @@ Template.home.helpers({
     return Meteor.users.find({
       goingDate: getMidnightDate(new Date())
     });
+  },
+  connected: function() {
+    return Meteor.status().connected;
   }
 });
 
@@ -27,6 +30,7 @@ Template.home.events({
           alert('Chyba, skús znovu. ' + err.message);
           Meteor.call('log', err.message);
           console.log('login error: ', err);
+          $('.login-text').text('Prihlásiť sa');
         }
       });
     }, 10);

@@ -11,6 +11,11 @@
   <div class="container center">
     <p><img src="/images/kalnica-logo.png" alt="Kalnica logo" /></p>
     <div class="row">
+      {{#unless connected}}
+        <div class="alert alert-warning">
+          Čakám na pripojenie...
+        </div>
+      {{/unless}}
       {{#if loggingIn}}
         {{> spinner}}
       {{else}}
